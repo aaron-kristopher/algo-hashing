@@ -4,7 +4,6 @@ public class DigitSelection extends HashFunction {
 
     @Override
     public int hash(String key) {
-        return toASCIIValue(key).charAt(0);
+        return Character.getNumericValue(toASCIIValue(key).charAt(0));
     }
-
 }
