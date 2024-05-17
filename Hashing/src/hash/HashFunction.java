@@ -4,7 +4,9 @@ import java.util.stream.Collectors;
 
 public abstract class HashFunction {
 
-    public String hash(String key) {
+    public abstract int hash(String key);
+
+    public static String toASCIIValue(String key) {
 
         String hash = key.chars()
                 .map(c -> (int) c) // Convert chars to int (ASCII)
