@@ -6,7 +6,7 @@ public abstract class HashFunction {
 
     public abstract int hash(String key);
 
-    public static String toASCIIValue(String key) {
+    public String toASCIIValue(String key) {
 
         String hash = key.chars()
                 .map(c -> (int) c) // Convert chars to int (ASCII)
