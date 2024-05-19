@@ -3,30 +3,28 @@ package datastructures;
 import collision.CollisionResolution;
 import hash.HashFunction;
 
-public class SymbolTable {
+public abstract class SymbolTable {
 
-    private String[] table = new String[50];
+    protected CollisionResolution collisionResolution;
+    protected final int size = 50;
 
-    public void put(String key, int index, HashFunction hashFunction, CollisionResolution collisionResolution) {
-        String hashedValue = HashFunction.toASCIIValue(key);
-
-        while (!isCellEmpty(index))
-            index = collisionResolution.resolveCollision(index, hashedValue, this);
-
-        table[index] = key;
+    public SymbolTable(CollisionResolution collisionResolution) {
+        this.collisionResolution = collisionResolution;
     }
 
-    public String get(int index) {
-        return table[index];
-    }
+    public abstract void put(String key, HashFunction hashFunction, CollisionResolution collisionResolution);
 
-    private boolean isCellEmpty(int index) {
-        return table[index] == null;
-    }
+    public abstract String get(int index);
+
+    public abstract boolean isCellEmpty(int index);
 
     public void printTable() {
-        for (int i = 0; i < table.length; i++) {
+        for (int i = 0; i < size; i++) {
             System.out.println(i + ": " + get(i));
         }
+    }
+
+    public int length() {
+        return size;
     }
 }
