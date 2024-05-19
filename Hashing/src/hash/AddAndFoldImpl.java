@@ -1,6 +1,6 @@
 package hash;
 
-public class AddAndFold extends HashFunction {
+public class AddAndFoldImpl extends HashFunctionStrategy {
 
     @Override
     public int hash(String key) {
