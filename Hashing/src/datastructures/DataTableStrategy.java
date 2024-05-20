@@ -11,6 +11,7 @@ public abstract class DataTableStrategy {
 
     public DataTableStrategy(HashFunctionStrategy hashFunction, CollisionResolutionStrategy collisionResolution) {
         this.collisionResolution = collisionResolution;
+        this.hashFunction = hashFunction;
     }
 
     public abstract void put(String key);
