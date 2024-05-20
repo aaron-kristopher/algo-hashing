@@ -20,22 +20,41 @@ public class Main {
         int rerun = 1;
 
         while (rerun == 1) {
+
+            // Display the home screen
+            Menu.clearScreen();
+            Menu.displayHome();
+            Input.flush();
+            Menu.clearScreen();
+
+            // Display the hashing menu
             Menu.displayHashingMenu();
             int hashFunctionOption = Input.getHashFunction(4);
+            Menu.clearScreen();
 
+            // Display the collision resolution menu
             Menu.displayCollisionResolutionMenu();
             int collisionResolutionOption = Input.getCollisionResolution(3);
+            Menu.clearScreen();
 
+            // Create the hash table
             DataTableStrategy table = createTable(createHashFunction(hashFunctionOption),
                     createCollisionResolution(collisionResolutionOption));
+
+            // Get the words from the user
 
             int wordCount = Input.getWordCount(table.length());
             String[] words = Input.getWords(wordCount);
 
-            for (String word : words)
-                table.put(word);
+            // String[] words = createRandomWords();
 
-            System.out.println(table);
+            // Put the words in the table
+            populateTable(table, words);
+            Menu.clearScreen();
+
+            // Display the hash table
+            Menu.displayStrategy(table.getHashFunctionStrategy(), table.getCollisionResolutionStrategy());
+            Menu.displayTable(table);
 
             rerun = Input.getRerun();
         }
@@ -68,5 +87,25 @@ public class Main {
             case 3 -> new SecondHashFunctionImpl();
             default -> null;
         };
+    }
+
+    private static void populateTable(DataTableStrategy table, String[] words) {
+        for (String word : words)
+            table.put(word);
+    }
+
+    private static String[] createRandomWords() {
+        String[] words = { "computer", "book", "coffee", "music", "phone",
+                "science", "nature", "travel", "history", "art",
+                "happy", "sad", "angry", "love", "peace",
+                "mountain", "ocean", "forest", "river", "sky",
+                "sun", "moon", "star", "cloud", "rain",
+                "food", "drink", "sleep", "dream", "think",
+                "learn", "work", "play", "laugh", "cry",
+                "big", "small", "hot", "cold", "fast",
+                "slow", "up", "down", "left", "right",
+                "in", "out", "on", "off", "before" };
+
+        return words;
     }
 }
