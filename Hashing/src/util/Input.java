@@ -75,9 +75,16 @@ public class Input {
         String[] words = new String[wordCount];
         scanner.nextLine();
 
-        for (int i = 0; i < wordCount; i++) {
-            System.out.printf("Enter word %s: ", (i + 1));
-            words[i] = scanner.nextLine();
+        int counter = 0;
+        while (counter < wordCount) {
+            System.out.printf("Enter word %s: ", (counter + 1));
+            String word = scanner.nextLine();
+            if (word.isEmpty() || word.isBlank()) {
+                System.out.println("\nInvalid input. Please enter a word!\n");
+            } else {
+                words[counter] = word;
+                counter++;
+            }
         }
 
         return words;
@@ -104,4 +111,7 @@ public class Input {
         return choice;
     }
 
+    public static void flush() {
+        scanner.nextLine();
+    }
 }
