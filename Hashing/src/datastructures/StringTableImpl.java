@@ -6,6 +6,7 @@ import hash.HashFunctionStrategy;
 public class StringTableImpl extends DataTableStrategy {
 
     private String[] table = new String[50];
+    private int longestWordLength = 0;
 
     public StringTableImpl(HashFunctionStrategy hashFunction, CollisionResolutionStrategy collisionResolution) {
         super(hashFunction, collisionResolution);
@@ -40,4 +41,14 @@ public class StringTableImpl extends DataTableStrategy {
         }
         return sb.toString();
     }
+
+    @Override
+    public int getLongestWordLength() {
+        for (String word : table) {
+            if (word != null && word.length() > longestWordLength)
+                longestWordLength = word.length();
+        }
+        return longestWordLength;
+    }
+
 }
