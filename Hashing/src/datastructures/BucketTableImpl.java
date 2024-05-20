@@ -7,7 +7,8 @@ import hash.HashFunctionStrategy;
 
 public class BucketTableImpl extends DataTableStrategy {
 
-    LinkedList<String>[] table = new LinkedList[50];
+    @SuppressWarnings({ "unchecked" })
+    private LinkedList<String>[] table = new LinkedList[50];
 
     public BucketTableImpl(HashFunctionStrategy hashFunction, CollisionResolutionStrategy collisionResolution) {
         super(hashFunction, collisionResolution);
@@ -18,8 +19,11 @@ public class BucketTableImpl extends DataTableStrategy {
         String hashedValue = hashFunction.toASCIIValue(key);
         int index = hashFunction.hash(hashedValue);
 
-        if (!isCellEmpty(index))
-            collisionResolution.resolveCollision(index, hashedValue, this);
+        if (!isCellEmpty(index)) {
+            index = collisionResolution.resolveCollision(index, key, this);
+            table[index].add(key);
+            return;
+        }
 
         table[index] = new LinkedList<>();
         table[index].add(key);
@@ -39,7 +43,7 @@ public class BucketTableImpl extends DataTableStrategy {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < table.length; i++) {
-            sb.append(i + ": " + table[i] + "\n");
+            sb.append(i + ": " + (table[i] == null ? " " : table[i].toString()) + "\n");
         }
         return sb.toString();
     }
