@@ -20,6 +20,8 @@ public abstract class DataTableStrategy {
 
     public abstract boolean isCellEmpty(int index);
 
+    public abstract int getLongestWordLength();
+
     public void printTable() {
         for (int i = 0; i < size; i++) {
             System.out.println(i + ": " + get(i));
@@ -37,4 +39,13 @@ public abstract class DataTableStrategy {
     public void setHashFunctionStrategy(HashFunctionStrategy hashFunction) {
         this.hashFunction = hashFunction;
     }
+
+    public String getCollisionResolutionStrategy() {
+        return collisionResolution.toString();
+    }
+
+    public String getHashFunctionStrategy() {
+        return hashFunction.toString();
+    }
+
 }
