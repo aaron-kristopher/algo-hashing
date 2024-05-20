@@ -18,4 +18,9 @@ public class ModuloArithmeticImpl extends HashFunctionStrategy {
 
         return index;
     }
+
+    @Override
+    public String toString() {
+        return "Modulo Arithmetic";
+    }
 }

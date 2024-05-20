@@ -6,4 +6,9 @@ public class DigitSelectionImpl extends HashFunctionStrategy {
     public int hash(String key) {
         return Character.getNumericValue(toASCIIValue(key).charAt(0));
     }
+
+    @Override
+    public String toString() {
+        return "Digit Selection";
+    }
 }

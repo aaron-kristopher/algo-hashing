@@ -14,4 +14,8 @@ public class AddAndFoldImpl extends HashFunctionStrategy {
         return sum < MAX_INDEX_SIZE ? sum : sum % 10;
     }
 
+    @Override
+    public String toString() {
+        return "Add and Fold";
+    }
 }

@@ -10,4 +10,9 @@ public class MidsquareImpl extends HashFunctionStrategy {
 
         return midsquare < MAX_INDEX_SIZE ? midsquare : midsquare % 10;
     }
+
+    @Override
+    public String toString() {
+        return "MidSquare";
+    }
 }
