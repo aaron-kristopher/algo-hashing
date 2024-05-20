@@ -22,7 +22,7 @@ public class StringTableImpl extends DataTableStrategy {
         int index = hashFunction.hash(hashedValue);
 
         while (!isCellEmpty(index))
-            index = collisionResolution.resolveCollision(index, hashedValue, this);
+            index = collisionResolution.resolveCollision(index, key, this);
 
         table[index] = key;
     }
@@ -36,7 +36,7 @@ public class StringTableImpl extends DataTableStrategy {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < table.length; i++) {
-            sb.append(i + ": " + table[i] + "\n");
+            sb.append(i + ": " + (table[i] == null ? " " : table[i]) + "\n");
         }
         return sb.toString();
     }
