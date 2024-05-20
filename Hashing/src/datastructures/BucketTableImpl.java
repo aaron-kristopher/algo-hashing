@@ -9,6 +9,7 @@ public class BucketTableImpl extends DataTableStrategy {
 
     @SuppressWarnings({ "unchecked" })
     private LinkedList<String>[] table = new LinkedList[50];
+    private int longestWordLength = 0;
 
     public BucketTableImpl(HashFunctionStrategy hashFunction, CollisionResolutionStrategy collisionResolution) {
         super(hashFunction, collisionResolution);
@@ -19,13 +20,9 @@ public class BucketTableImpl extends DataTableStrategy {
         String hashedValue = hashFunction.toASCIIValue(key);
         int index = hashFunction.hash(hashedValue);
 
-        if (!isCellEmpty(index)) {
-            index = collisionResolution.resolveCollision(index, key, this);
-            table[index].add(key);
-            return;
-        }
+        if (isCellEmpty(index))
+            table[index] = new LinkedList<>();
 
-        table[index] = new LinkedList<>();
         table[index].add(key);
     }
 
@@ -46,5 +43,19 @@ public class BucketTableImpl extends DataTableStrategy {
             sb.append(i + ": " + (table[i] == null ? " " : table[i].toString()) + "\n");
         }
         return sb.toString();
+    }
+
+    @Override
+    public int getLongestWordLength() {
+        for (LinkedList<String> list : table) {
+            if (list != null) {
+                for (String word : list) {
+                    if (word.length() > longestWordLength)
+                        longestWordLength = word.length();
+                }
+            }
+        }
+
+        return longestWordLength;
     }
 }
