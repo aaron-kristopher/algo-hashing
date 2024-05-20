@@ -8,6 +8,6 @@ public class MidsquareImpl extends HashFunctionStrategy {
         int mid = Character.getNumericValue(ASCIIValue.charAt(ASCIIValue.length() / 2));
         int midsquare = mid * mid;
 
-        return midsquare < 50 ? midsquare : midsquare % 10;
+        return midsquare < MAX_INDEX_SIZE ? midsquare : midsquare % 10;
     }
 }

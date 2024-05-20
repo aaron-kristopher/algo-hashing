@@ -4,6 +4,8 @@ import java.util.stream.Collectors;
 
 public abstract class HashFunctionStrategy {
 
+    protected static final int MAX_INDEX_SIZE = 50;
+
     public abstract int hash(String key);
 
     public String toASCIIValue(String key) {

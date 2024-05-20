@@ -10,7 +10,8 @@ public class AddAndFoldImpl extends HashFunctionStrategy {
         for (int i = 0; i < ASCIIValue.length(); i++)
             sum += Integer.parseInt(String.valueOf(ASCIIValue.charAt(i)));
 
-        return sum;
+        // Choose right digit if index exceeds the maximum index size
+        return sum < MAX_INDEX_SIZE ? sum : sum % 10;
     }
 
 }
