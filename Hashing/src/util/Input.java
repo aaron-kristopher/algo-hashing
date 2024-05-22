@@ -52,12 +52,12 @@ public class Input {
         int choice = -1;
 
         while (choice < 0 || choice > MAX_TABLE_SIZE) {
-            System.out.print("How many words do you want: ");
+            System.out.print("How many word(s) are to be entered (1-50): ");
 
             try {
                 choice = scanner.nextInt();
                 if (choice < 0 || choice > MAX_TABLE_SIZE) {
-                    System.out.printf("\n\nInvalid choice (Must be within 1 - %s). Please try again.\n",
+                    System.out.printf("\nInvalid choice (Must be within 1 - %s). Please try again.\n\n",
                             MAX_TABLE_SIZE + 1);
                 }
 
@@ -75,7 +75,7 @@ public class Input {
 
     public static String getWords(int itr) {
         while (true) {
-            System.out.printf("Enter word %s: ", (itr + 1));
+            System.out.printf("Enter word # %s: ", (itr + 1));
             String word = scanner.nextLine();
             if (word.isEmpty() || word.isBlank()) {
                 System.out.println("\nInvalid input. Please enter a word!\n");
