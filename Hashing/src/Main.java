@@ -44,12 +44,9 @@ public class Main {
             // Get the words from the user
 
             int wordCount = Input.getWordCount(table.length());
-            String[] words = Input.getWords(wordCount);
-
-            // String[] words = createRandomWords();
+            populateTable(table, wordCount);
 
             // Put the words in the table
-            populateTable(table, words);
             Menu.clearScreen();
 
             // Display the hash table
@@ -89,9 +86,12 @@ public class Main {
         };
     }
 
-    private static void populateTable(DataTableStrategy table, String[] words) {
-        for (String word : words)
-            table.put(word);
+    private static void populateTable(DataTableStrategy table, int wordCount) {
+        int itr = 0;
+        while (wordCount > 0) {
+            table.put(Input.getWords(itr++));
+            wordCount--;
+        }
     }
 
     private static String[] createRandomWords() {
