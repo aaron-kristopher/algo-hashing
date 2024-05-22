@@ -5,7 +5,24 @@ import datastructures.DataTableStrategy;
 public class Menu {
 
     public static void displayHome() {
-        System.out.println("Welcome to the Hashing Program!");
+        System.out.println(
+                """
+                        ╔════════════─┉┈◈◉◈┈┉════════════════─┉┈◈◉◈┈┉═════════════ ≪ °❈° ≫ ═══════════════─┉┈◈◉◈┈┉════════════════─┉┈◈◉◈┈┉═════════════╗
+
+                            ██╗  ██╗ █████╗ ███████╗██╗  ██╗██╗███╗   ██╗ ██████╗     ██████╗ ██████╗  ██████╗  ██████╗ ██████╗  █████╗ ███╗   ███╗██╗
+                            ██║  ██║██╔══██╗██╔════╝██║  ██║██║████╗  ██║██╔════╝     ██╔══██╗██╔══██╗██╔═══██╗██╔════╝ ██╔══██╗██╔══██╗████╗ ████║██║
+                            ███████║███████║███████╗███████║██║██╔██╗ ██║██║  ███╗    ██████╔╝██████╔╝██║   ██║██║  ███╗██████╔╝███████║██╔████╔██║██║
+                            ██╔══██║██╔══██║╚════██║██╔══██║██║██║╚██╗██║██║   ██║    ██╔═══╝ ██╔══██╗██║   ██║██║   ██║██╔══██╗██╔══██║██║╚██╔╝██║╚═╝
+                            ██║  ██║██║  ██║███████║██║  ██║██║██║ ╚████║╚██████╔╝    ██║     ██║  ██║╚██████╔╝╚██████╔╝██║  ██║██║  ██║██║ ╚═╝ ██║██╗
+                            ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝     ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝
+
+                        ╚════════════─┉┈◈◉◈┈┉════════════════─┉┈◈◉◈┈┉═════════════ ≪ °❈° ≫ ═══════════════─┉┈◈◉◈┈┉════════════════─┉┈◈◉◈┈┉═════════════╝
+                                            """);
+
+        System.out.println("WELCOME TO THE HASHING PROGRAM!");
+        System.out.println();
+        System.out.println("Introduction:");
+        System.out.println();
         System.out.println("This program will create a hash table based on the options you choose.");
         System.out.println("You will be asked to enter a number of words, and then the words themselves.");
         System.out.println("The program will then display the hash table.");
@@ -43,7 +60,8 @@ public class Menu {
     }
 
     public static void displayCloseProgram() {
-        System.out.println("Closing program...");
+        System.out.println();
+        System.out.println("Closing Program...");
     }
 
     public static void clearScreen() {
