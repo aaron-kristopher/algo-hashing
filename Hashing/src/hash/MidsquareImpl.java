@@ -8,7 +8,17 @@ public class MidsquareImpl extends HashFunctionStrategy {
         int mid = Character.getNumericValue(ASCIIValue.charAt(ASCIIValue.length() / 2));
         int midsquare = mid * mid;
 
-        return midsquare < MAX_INDEX_SIZE ? midsquare : midsquare % 10;
+        int counter = 0; // Prevent infinite loop
+        while (midsquare > MAX_INDEX_SIZE && counter < 3) {
+            midsquare = square(midsquare % 10); // Get the rightmost digit and square again
+            counter++;
+        }
+
+        return midsquare;
+    }
+
+    private int square(int mid) {
+        return mid * mid;
     }
 
     @Override
