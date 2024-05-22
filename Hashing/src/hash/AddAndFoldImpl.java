@@ -3,8 +3,7 @@ package hash;
 public class AddAndFoldImpl extends HashFunctionStrategy {
 
     @Override
-    public int hash(String key) {
-        String ASCIIValue = toASCIIValue(key);
+    public int hash(String ASCIIValue) {
         int sum = add(ASCIIValue);
 
         while (sum > MAX_INDEX_SIZE)

@@ -5,8 +5,7 @@ import java.math.BigInteger;
 public class ModuloArithmeticImpl extends HashFunctionStrategy {
 
     @Override
-    public int hash(String key) {
-        String ASCIIValue = toASCIIValue(key);
+    public int hash(String ASCIIValue) {
 
         int index = 0;
         try {
