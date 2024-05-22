@@ -9,10 +9,8 @@ public class SecondHashFunctionImpl implements CollisionResolutionStrategy {
     public int resolveCollision(int index, String key, DataTableStrategy table) {
         int MAX_LOOPS = 10;
 
-        System.out.println("Resolving collision");
-
         ModuloArithmeticImpl moduloArithmetic = new ModuloArithmeticImpl();
-        int step = moduloArithmetic.hash(key);
+        int step = moduloArithmetic.hash(moduloArithmetic.toASCIIValue(key));
         int newIndex = (index + step) % table.length();
 
         int loops = 0; // Prevent infinite loop
