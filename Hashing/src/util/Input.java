@@ -67,27 +67,23 @@ public class Input {
             }
         }
 
+        scanner.nextLine();
+
         return choice;
 
     }
 
-    public static String[] getWords(int wordCount) {
-        String[] words = new String[wordCount];
-        scanner.nextLine();
-
-        int counter = 0;
-        while (counter < wordCount) {
-            System.out.printf("Enter word %s: ", (counter + 1));
+    public static String getWords(int itr) {
+        while (true) {
+            System.out.printf("Enter word %s: ", (itr + 1));
             String word = scanner.nextLine();
             if (word.isEmpty() || word.isBlank()) {
                 System.out.println("\nInvalid input. Please enter a word!\n");
             } else {
-                words[counter] = word;
-                counter++;
+                return word;
             }
         }
 
-        return words;
     }
 
     public static int getRerun() {
