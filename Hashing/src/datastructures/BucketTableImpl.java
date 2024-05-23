@@ -38,24 +38,50 @@ public class BucketTableImpl extends DataTableStrategy {
 
     @Override
     public String toString() {
+        getLongestWordLength();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < table.length; i++) {
-            sb.append(i + ": " + (table[i] == null ? " " : table[i].toString()) + "\n");
+        for (int i = 0; i < table.length / 5; i++) {
+            sb.append(formatEntry(i));
+            sb.append(formatEntry(i + 10));
+            sb.append(formatEntry(i + 20));
+            sb.append(formatEntry(i + 30));
+            sb.append(formatEntry(i + 40) + "\n");
         }
         return sb.toString();
     }
 
+    private String formatList(LinkedList<String> tableList) {
+        StringBuilder sb = new StringBuilder();
+        for (String word : tableList) {
+            sb.append(word);
+            if (word != tableList.getLast())
+                sb.append(" -> ");
+
+        }
+        return sb.toString();
+    }
+
+    private String formatEntry(int index) {
+        String width = (table[index] == null ? " ".repeat(longestWordLength + 2) : formatList(table[index]));
+        return index + ": " + width + " ".repeat(longestWordLength - width.length() + 2);
+
+    }
+
     @Override
     public int getLongestWordLength() {
+
         for (LinkedList<String> list : table) {
-            if (list != null) {
-                for (String word : list) {
-                    if (word.length() > longestWordLength)
-                        longestWordLength = word.length();
-                }
+            if (list == null)
+                continue;
+            for (String word : list) {
+                StringBuilder sb = new StringBuilder();
+                for (int index = 0; index < word.length(); index++)
+                    sb.append(table[index] == null ? "" : formatList(table[index]));
+
+                if (sb.length() > longestWordLength)
+                    longestWordLength = sb.length();
             }
         }
-
         return longestWordLength;
     }
 }

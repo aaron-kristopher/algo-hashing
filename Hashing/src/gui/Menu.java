@@ -131,7 +131,7 @@ public class Menu {
     }
 
     private static void displayBucket(DataTableStrategy table) {
-        System.out.println(table.toString());
+        System.out.println(table);
     }
 
 }
